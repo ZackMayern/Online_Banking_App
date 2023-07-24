@@ -1,0 +1,34 @@
+<div class="outer">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+                <div class="panel border bg-white">
+                    <div class="panel-heading">
+                        <h3 class="pt-3 text-center font-weight-bold">Login</h3>
+                    </div>
+                    <div class="panel-body p-3">
+                        <form [formGroup]="loginForm" action="">
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-user p-2"></span>
+                                    <input formControlName="accountNumber" type="text" pattern="[0-9]+" maxlength=12 name="" id="" placeholder="Account Number">
+                                </div>
+                                <small *ngIf="loginForm.controls['accountNumber'].dirty && loginForm.hasError('required', 'accountNumber')" class="text-danger">*Account Number is required and must be numerical.</small>
+                            </div>
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-lock p-2"></span>
+                                    <input formControlName="password" [type]="type" name="" id="" placeholder="Password" maxlength="16">
+                                    <span (click)="hideShowPass()" class="fa {{eyeIcon}}" id="eye-slash"></span>
+                                </div>
+                                <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')" class="text-danger">*Password is required (Upto 16 characters)</small>
+                            </div>
+                            <button (click)="onSubmit()" type="submit" class="btn btn-primary btn-block mt-4 w-100">Login</button>
+                            <div class="text-center pt-4 text-muted">Don't have account? <a id="forget" routerLink="/signup">Order an account</a></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

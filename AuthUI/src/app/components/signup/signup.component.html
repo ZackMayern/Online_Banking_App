@@ -1,0 +1,49 @@
+<div class="outer">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+                <div class="panel border bg-white">
+                    <div class="panel-heading">
+                        <h3 class="pt-3 text-center font-weight-bold">Order an Account</h3>
+                        <br>
+                        <p class="text-center">Fill the form with correct details.</p>
+                    </div>
+                    <div class="panel-body p-3">
+                        <form [formGroup]="signupForm" action="">
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-envelope p-2"></span>
+                                    <input formControlName="email" type="email" name="" id="" placeholder="Email">
+                                </div>
+                                <small *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('required', 'email')" class="text-danger">*Email-ID is required</small>
+                            </div>
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-id-card p-2"></span>
+                                    <input formControlName="aadharNumber" type="text" pattern="[0-9]+" maxlength=12 name="" id="" placeholder="AADHAR Number">
+                                </div>
+                                <small *ngIf="signupForm.controls['aadharNumber'].dirty && signupForm.hasError('required', 'aadharNumber')" class="text-danger">*AADHAR Number is required and must be numerical</small>
+                            </div>
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-id-card p-2"></span>
+                                    <input formControlName="panNumber" type="text" name="" id="" placeholder="PAN Card Number" maxlength="10">
+                                </div>
+                                <small *ngIf="signupForm.controls['panNumber'].dirty && signupForm.hasError('required', 'panNumber')" class="text-danger">*PAN Card Number is required</small>
+                            </div>
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-calendar p-2"></span>
+                                    <input formControlName="dob" type="date" name="" id="" placeholder="Date Of Birth">
+                                </div>
+                                <small *ngIf="signupForm.controls['dob'].dirty && signupForm.hasError('required', 'dob')" class="text-danger">*Date Of Birth is required</small>
+                            </div>
+                            <button (click)="onOrder()" type="submit" class="btn btn-primary btn-block mt-4 w-100">Order an account</button>
+                            <div class="text-center pt-4 text-muted">Already have an account? <a id="forget" routerLink="/login">Login</a></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
