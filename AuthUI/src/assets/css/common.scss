@@ -1,6 +1,5 @@
 .outer{
     height: 100vh;
-    background: linear-gradient(#e66465, #9198e5);
 }
 
 .panel-heading{
@@ -48,6 +47,7 @@ a:hover{
 }
 
 .input-field.error, input:invalid{
+    border-radius: 5px;
     border: 1px solid red;
     color: red;
 }

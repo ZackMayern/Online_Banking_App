@@ -14,18 +14,16 @@ export class LoginComponent {
   
   constructor(private fb : FormBuilder){
     this.loginForm = this.fb.group({
-      accountNumber: ['', Validators.required],
+      custID: ['', Validators.required],
       password: ['', Validators.required]
     })
   }
-
   // For showing/hiding the eye icon in the password input
   hideShowPass(){
     this.isText = !this.isText;
     this.isText ? this.eyeIcon = "fa-eye" : this.eyeIcon = "fa-eye-slash";
     this.isText ? this.type = "text" : this.type = "password";
   }
-
   // For validation of the form
   onSubmit(){
     if(this.loginForm.valid){

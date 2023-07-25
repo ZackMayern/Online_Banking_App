@@ -11,14 +11,14 @@
                             <div class="form-group pt-3">
                                 <div class="input-field">
                                     <span class="fa fa-user p-2"></span>
-                                    <input formControlName="accountNumber" type="text" pattern="[0-9]+" maxlength=12 name="" id="" placeholder="Account Number">
+                                    <input formControlName="custID" type="text" maxlength=11 name="" id="" placeholder="Customer ID">
                                 </div>
-                                <small *ngIf="loginForm.controls['accountNumber'].dirty && loginForm.hasError('required', 'accountNumber')" class="text-danger">*Account Number is required and must be numerical.</small>
+                                <small *ngIf="loginForm.controls['custID'].dirty && loginForm.hasError('required', 'custID')" class="text-danger">*Customer ID is required.</small>
                             </div>
                             <div class="form-group pt-3">
                                 <div class="input-field">
                                     <span class="fa fa-lock p-2"></span>
-                                    <input formControlName="password" [type]="type" name="" id="" placeholder="Password" maxlength="16">
+                                    <input formControlName="password" [type]="type" name="" id="" placeholder="Password" maxlength="32">
                                     <span (click)="hideShowPass()" class="fa {{eyeIcon}}" id="eye-slash"></span>
                                 </div>
                                 <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')" class="text-danger">*Password is required (Upto 16 characters)</small>

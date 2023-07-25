@@ -15,14 +15,19 @@ export class SignupComponent {
   constructor(private fb : FormBuilder){
     this.signupForm = this.fb.group({
       email: ['', Validators.required],
+      fullName: ['', Validators.required],
       aadharNumber: ['', Validators.required],
       panNumber: ['', Validators.required],
       dob: ['', Validators.required]
     })
   }
-
   // For showing/hiding the eye icon in the password input
-
+  hideShowPass(){
+    this.isText = !this.isText;
+    this.isText ? this.eyeIcon = "fa-eye" : this.eyeIcon = "fa-eye-slash";
+    this.isText ? this.type = "text" : this.type = "password";
+  }
+  // For validation of the form
   onOrder(){
     if(this.signupForm.valid){
       //Send the object to DB
