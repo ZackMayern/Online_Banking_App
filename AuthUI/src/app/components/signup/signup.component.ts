@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import ValidateForm from 'src/app/helpers/validateForm';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -12,12 +14,13 @@ export class SignupComponent {
   eyeIcon: string = "fa-eye-slash";
   signupForm: FormGroup;
 
-  constructor(private fb : FormBuilder){
+  constructor(private fb : FormBuilder, private auth : AuthService, private router : Router){
     this.signupForm = this.fb.group({
       email: ['', Validators.required],
       fullName: ['', Validators.required],
       aadharNumber: ['', Validators.required],
       panNumber: ['', Validators.required],
+      password: ['', Validators.required],
       dob: ['', Validators.required]
     })
   }
@@ -31,7 +34,16 @@ export class SignupComponent {
   onOrder(){
     if(this.signupForm.valid){
       //Send the object to DB
-      console.log(this.signupForm.value);
+      this.auth.signUp(this.signupForm.value).subscribe({
+        next:(res=>{ 
+          alert(res.message);
+          this.signupForm.reset();
+          this.router.navigate(['login']);
+          }),
+        error:(err=>{ 
+          alert(err?.error.message) 
+        })
+      })
     }
     else{
       // Throw error
