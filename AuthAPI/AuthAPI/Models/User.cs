@@ -13,7 +13,6 @@ namespace AuthAPI.Models
         public string FullName { get; set; }
         public string AadharNumber { get; set; }
         public string PanNumber { get; set; }
-        public DateTime Dob { get; set; }
         public string CustID { get; set; }
         public string AccountNumber { get; set; }
         public string Token { get; set; }

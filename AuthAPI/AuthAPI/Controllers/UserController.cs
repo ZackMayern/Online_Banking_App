@@ -85,7 +85,7 @@ namespace AuthAPI.Controllers
         //    }
 
         //    if (!(Regex.IsMatch(password, "[<,>,@,!,#,$,%,^,&,*,(,),_,+,\\[,\\],{,},?,:,;,|,',\\,.,/,~,`,-,=]")))
-        //    {
+        //    {0
         //        sb.Append("Password should contain special character" + Environment.NewLine);
         //    }
         //    return sb.ToString();
@@ -105,7 +105,8 @@ namespace AuthAPI.Controllers
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = identity,
-                Expires = DateTime.Now.AddDays(1),
+                //Expires = DateTime.Now.AddMinutes(5),
+                Expires = DateTime.Now.AddHours(1),
                 SigningCredentials = credentials
             };
             var token = jwtHandler.CreateToken(tokenDescriptor);
