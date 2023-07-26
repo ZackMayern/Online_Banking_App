@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 import ValidateForm from 'src/app/helpers/validateForm';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -13,7 +14,9 @@ export class LoginComponent {
   eyeIcon: string = "fa-eye-slash";
   loginForm: FormGroup;
   
-  constructor(private fb : FormBuilder, private auth: AuthService){
+  constructor(private fb : FormBuilder, 
+    private auth: AuthService, 
+    private router : Router){
     this.loginForm = this.fb.group({
       custID: ['', Validators.required],
       password: ['', Validators.required]
@@ -33,6 +36,8 @@ export class LoginComponent {
         next:(res=>{ 
           alert(res.message);
           this.loginForm.reset();
+          this.auth.storeToken(res.token);
+          this.router.navigate(['dashboard']);
         }),
         error:(err=>{ 
           alert(err?.error.message) })

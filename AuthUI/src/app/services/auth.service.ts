@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   private baseUrl:string = "https://localhost:7073/api/User/";
-  constructor(private http : HttpClient) { 
+  constructor(private http : HttpClient, private router : Router) { 
     
   }
 
@@ -16,5 +18,30 @@ export class AuthService {
 
   login(loginObj:any){
     return this.http.post<any>(`${this.baseUrl}authenticate`, loginObj)
+  }
+
+  storeToken(tokenValue:string){
+    localStorage.setItem('token', tokenValue);
+  }
+
+  storeRole(role:string){
+    localStorage.setItem('role', role)
+  }
+
+  getRole(){
+    return localStorage.getItem('role');
+  }
+
+  getToken(){
+    return localStorage.getItem('token');
+  }
+
+  isLoggedIn():boolean{
+    return !!localStorage.getItem('token');
+  }
+
+  signOut(){
+    localStorage.clear();
+    this.router.navigate(['login']);
   }
 }

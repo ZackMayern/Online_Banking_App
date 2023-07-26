@@ -20,7 +20,6 @@ export class SignupComponent {
       fullName: ['', Validators.required],
       aadharNumber: ['', Validators.required],
       panNumber: ['', Validators.required],
-      password: ['', Validators.required],
       dob: ['', Validators.required]
     })
   }
