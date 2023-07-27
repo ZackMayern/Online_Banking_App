@@ -19,8 +19,7 @@ export class SignupComponent {
       email: ['', Validators.required],
       fullName: ['', Validators.required],
       aadharNumber: ['', Validators.required],
-      panNumber: ['', Validators.required],
-      dob: ['', Validators.required]
+      panNumber: ['', Validators.required]
     })
   }
   // For showing/hiding the eye icon in the password input

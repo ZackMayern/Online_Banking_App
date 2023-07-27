@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuthAPI.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20230726144919_addtoDB_v1")]
-    partial class addtoDB_v1
+    [Migration("20230727061928_addToDB_v2")]
+    partial class addToDB_v2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,6 +36,9 @@ namespace AuthAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AccountNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Balance")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CustID")
